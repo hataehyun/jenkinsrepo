@@ -14,7 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @Repository
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**/root-context.xml" })
 public class BoardDAOImple implements BoardDAO {
@@ -35,6 +34,24 @@ public class BoardDAOImple implements BoardDAO {
 	public int listCount(Criteria cri) {
 		// TODO Auto-generated method stub
 		return sst.selectOne(namespace+".listCount",cri);
+	}
+
+	@Override
+	public void create(BoardVO vo) {
+		sst.insert(namespace+".create", vo);
+		
+	}
+
+	@Override
+	public BoardVO read(int bno) {
+		return sst.selectOne(namespace+".read", bno);
+		
+	}
+
+	@Override
+	public void delete(int bno) {
+		sst.delete(namespace+".delete",bno);
+		
 	}
 
 }

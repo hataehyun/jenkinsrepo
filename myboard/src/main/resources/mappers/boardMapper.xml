@@ -23,7 +23,11 @@
 				and ( content like CONCAT('%', #{keyword}, '%') OR writer like
 				CONCAT('%', #{keyword}, '%'))
 			</if>
-			<if test="gategory == 'tcw'.toString()">
+			<if test="gategory == 'tw'.toString()">
+				and ( title like CONCAT('%', #{keyword}, '%') OR writer like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="gategory == 'all'.toString()">
 				and ( title like CONCAT('%', #{keyword}, '%')
 				OR
 				content like CONCAT('%', #{keyword}, '%')
@@ -44,5 +48,17 @@
 	<![CDATA[select count(bno) from tbl_board where bno > 0 ]]>
 	<include refid="search"></include>
 	</select>
+	
+	<insert id="create" parameterType="BoardVO">
+	insert into tbl_board (title, content, writer) values (#{title},#{content},#{writer})
+	</insert>
+	
+	<select id="read" parameterType="int" resultType="BoardVO">
+	select * from tbl_board where bno=#{bno}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+	delete from tbl_board where bno=#{bno};
+	</delete>
 
 </mapper>

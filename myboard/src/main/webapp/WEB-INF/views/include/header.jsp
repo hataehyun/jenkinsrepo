@@ -6,30 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- Bootstrap core CSS -->
-<style>
-#pagination {
-    display: inline-block;
-}
 
-#pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
-    margin: 0 4px;
-}
-
-#pagination a.active {
-    background-color: #68dff0;
-    color: white;
-    border: 1px solid #68dff0;
-}
-
-#pagination a:hover:not(.active) {background-color: #ddd;}
-</style>
     <link href="/resources/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/resources/assets/css/my.css?ver=1" rel="stylesheet">
     <!--external css-->
     <link href="/resources/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom styles for this template -->

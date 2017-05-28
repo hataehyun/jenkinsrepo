@@ -66,8 +66,11 @@ public class Criteria {
 
 	@Override
 	public String toString() {
-		return "Criteria [keyword=" + keyword + ", gategory=" + gategory + ", page=" + page + ", perPageNum="
-				+ perPageNum + "]";
+		if(keyword==null){
+			this.keyword="";
+		}
+		return "keyword="+keyword + "&gategory="+gategory + "&page=" + page + "&perPageNum="
+				+ perPageNum;
 	}
 }
 	

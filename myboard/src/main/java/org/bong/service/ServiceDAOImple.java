@@ -31,4 +31,19 @@ public class ServiceDAOImple implements ServiceDAO {
 	public int listCount(Criteria cri) {
 		return boardDAO.listCount(cri);
 	}
+	@Override
+	public void create(BoardVO vo) {
+		boardDAO.create(vo);
+		
+	}
+	@Override
+	public BoardVO read(int bno) {
+		return boardDAO.read(bno);
+		
+	}
+	@Override
+	public void delete(int bno) {
+		boardDAO.delete(bno);
+		
+	}
 }
