@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bong.domain.BoardVO;
 import org.bong.domain.Criteria;
+import org.bong.domain.Criteria2;
 import org.bong.domain.ReplyVO;
 
 public interface ServiceDAO {
@@ -14,6 +15,6 @@ public interface ServiceDAO {
 	public BoardVO read(int bno);
 	public void delete(int bno);
 //////////////////////////////////////////////////////
-	public List<ReplyVO> getReplyList();
+	public List<ReplyVO> getReplyList(Criteria2 cri2);
 	
 }

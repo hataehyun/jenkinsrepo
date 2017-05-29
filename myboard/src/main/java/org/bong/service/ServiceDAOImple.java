@@ -5,7 +5,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.bong.domain.BoardVO;
 import org.bong.domain.Criteria;
+import org.bong.domain.Criteria2;
+import org.bong.domain.ReplyVO;
 import org.bong.persistence.BoardDAO;
+import org.bong.persistence.ReplyDAO;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,10 @@ public class ServiceDAOImple implements ServiceDAO {
 
 	@Autowired
 	BoardDAO boardDAO;
+	
+	
+	@Autowired
+	ReplyDAO replyDAO;
 	
 	@Override
 	public List<BoardVO> getBoardList(Criteria cri) {
@@ -45,5 +52,10 @@ public class ServiceDAOImple implements ServiceDAO {
 	public void delete(int bno) {
 		boardDAO.delete(bno);
 		
+	}
+	@Override
+	public List<ReplyVO> getReplyList(Criteria2 cri2) {
+		// TODO Auto-generated method stub
+		return replyDAO.getReplyList(cri2);
 	}
 }
