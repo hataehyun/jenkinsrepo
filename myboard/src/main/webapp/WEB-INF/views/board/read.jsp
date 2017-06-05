@@ -173,7 +173,9 @@
 				}
 			});
 			$("#modalReplyBox").modal("toggle");
-			
+			replyList.empty();
+			pagination.empty();
+			replys(bno, $(".active").attr("href"));
 		});
 		$(document).on("click", "#pagination a", function(e){
 			e.stopPropagation();
