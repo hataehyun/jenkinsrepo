@@ -7,26 +7,18 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
-import org.bong.domain.Criteria;
 import org.bong.domain.Criteria2;
 import org.bong.domain.PageMaker2;
 import org.bong.domain.ReplyVO;
 import org.bong.service.ServiceDAO;
-import org.junit.runner.RunWith;
 import org.springframework.stereotype.Controller;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/reply")
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**/*-context.xml" })
 public class ReplyController {
 	private Logger logger = Logger.getLogger(ReplyController.class);
 	@Inject

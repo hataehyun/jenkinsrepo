@@ -9,21 +9,15 @@ import org.bong.domain.BoardVO;
 import org.bong.domain.Criteria;
 import org.bong.domain.PageMaker;
 import org.bong.service.ServiceDAO;
-import org.junit.runner.RunWith;
 import org.springframework.stereotype.Controller;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/board")
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**/*-context.xml" })
 public class BoardController {
 	private Logger logger = Logger.getLogger(BoardController.class);
 	
