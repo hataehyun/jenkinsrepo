@@ -54,7 +54,7 @@ public class ServiceDAOImple implements ServiceDAO {
 		boardDAO.delete(bno);
 		
 	}
-/////////////////원글처리 끝///////////////////////////////////////
+/////////////////contentEnd///////////////////////////////////////
 	@Override
 	public List<ReplyVO> getReplyList(Criteria2 cri2) {
 		// TODO Auto-generated method stub

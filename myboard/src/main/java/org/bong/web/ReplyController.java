@@ -52,7 +52,7 @@ public class ReplyController {
 	@PostMapping("registerNew")
 	@ResponseBody
 	public void registerNew(ReplyVO rvo){
-		logger.info("rvo뭐니????:"+rvo);
+		logger.info("rvo:"+rvo);
 		service.registerNew(rvo);
 	}
 }

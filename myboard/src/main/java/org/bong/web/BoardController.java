@@ -52,7 +52,7 @@ public class BoardController {
 	public String regiserPost(@ModelAttribute("cri") Criteria cri, BoardVO vo){
 		logger.info("CreateBoardVO: "+vo);
 		service.create(vo);
-		logger.info("뭐야크리"+cri.toString());
+		logger.info("what cri:"+cri.toString());
 	    return "redirect:/board/boardList?"+cri.toString();
 	}
 	@GetMapping("/read")
