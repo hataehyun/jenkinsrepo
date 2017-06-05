@@ -9,11 +9,11 @@ public class PageMaker2 {
 	
 	private int displayPageNum = 10;
 	
-	private Criteria cri;
+	private Criteria2 cri2;
 
 
-	public void setCri(Criteria cri) {
-		this.cri = cri;
+	public void setCri2(Criteria2 cri2) {
+		this.cri2 = cri2;
 	}
 
 	public void setTotalCount(int totalCount) {
@@ -24,11 +24,11 @@ public class PageMaker2 {
 
 	private void calcData() {
 		
-		endPage = (int) (Math.ceil(cri.getPage() / (double)displayPageNum ) * displayPageNum);
+		endPage = (int) (Math.ceil(cri2.getPage() / (double)displayPageNum ) * displayPageNum);
 		
 		startPage = (endPage - displayPageNum) + 1;
 		
-		int tempEndPage = (int)(Math.ceil(totalCount / (double)cri.getPerPageNum()));
+		int tempEndPage = (int)(Math.ceil(totalCount / (double)cri2.getPerPageNum()));
 		
 		if(endPage > tempEndPage){
 			endPage = tempEndPage;
@@ -36,7 +36,7 @@ public class PageMaker2 {
 		
 		prev = startPage ==1 ? false : true;
 		
-		next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
+		next = endPage * cri2.getPerPageNum() >= totalCount ? false : true;
 		
 	}
 
@@ -64,8 +64,8 @@ public class PageMaker2 {
 		return displayPageNum;
 	}
 
-	public Criteria getCri() {
-		return cri;
+	public Criteria2 getCri2() {
+		return cri2;
 	}
 	
 	
@@ -75,7 +75,7 @@ public class PageMaker2 {
 		return "PageMaker [totalCount=" + totalCount + ", startPage="
 				+ startPage + ", endPage=" + endPage + ", prev=" + prev
 				+ ", next=" + next + ", displayPageNum=" + displayPageNum
-				+ ", cri=" + cri + "]";
+				+ ", cri2=" + cri2 + "]";
 	}
 	
 }

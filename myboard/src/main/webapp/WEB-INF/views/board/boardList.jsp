@@ -97,7 +97,7 @@
 			//$("input[name=keyword]").val();
 			$("#f1").submit();
 			
-		})
+		});
 		$("#searchBtn").on("click",function(e){
 			e.stopPropagation();
 			e.preventDefault();

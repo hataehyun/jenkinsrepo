@@ -15,7 +15,7 @@
     <link href="/resources/assets/css/style.css" rel="stylesheet">
     <link href="/resources/assets/css/style-responsive.css" rel="stylesheet">
 		<!-- Latest compiled and minified CSS -->
-   
+   	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

@@ -8,4 +8,7 @@ import org.bong.domain.ReplyVO;
 public interface ReplyDAO {
 	
 	public List<ReplyVO> getReplyList(Criteria2 cri2);
+	public int total(int bno);
+	public void createNew(ReplyVO rvo);
+	public Integer getMaxGno(int bno);
 }

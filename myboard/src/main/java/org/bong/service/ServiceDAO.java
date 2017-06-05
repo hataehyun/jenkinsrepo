@@ -16,5 +16,7 @@ public interface ServiceDAO {
 	public void delete(int bno);
 //////////////////////////////////////////////////////
 	public List<ReplyVO> getReplyList(Criteria2 cri2);
+	public int total(int bno);
+	public void registerNew(ReplyVO rvo);
 	
 }

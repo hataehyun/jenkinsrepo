@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -53,9 +54,29 @@ public class ServiceDAOImple implements ServiceDAO {
 		boardDAO.delete(bno);
 		
 	}
+/////////////////원글처리 끝///////////////////////////////////////
 	@Override
 	public List<ReplyVO> getReplyList(Criteria2 cri2) {
 		// TODO Auto-generated method stub
 		return replyDAO.getReplyList(cri2);
 	}
+	@Override
+	public int total(int bno) {
+		return replyDAO.total(bno);
+	}
+	@Override
+	@Transactional
+	public void registerNew(ReplyVO rvo) {
+		Integer maxGno = replyDAO.getMaxGno(rvo.getBno());
+		logger.info(maxGno);
+		if(maxGno==null){
+			rvo.setGno(1);
+			replyDAO.createNew(rvo);
+		} else {
+			rvo.setGno(maxGno+1);
+			replyDAO.createNew(rvo);
+		}
+		
+	}
+
 }

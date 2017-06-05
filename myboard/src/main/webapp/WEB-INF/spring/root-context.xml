@@ -39,5 +39,5 @@
 	<context:component-scan base-package="org.bong.persistence"></context:component-scan>
 	<context:component-scan base-package="org.bong.domain"></context:component-scan>
 	<context:component-scan base-package="org.bong.service"></context:component-scan>
-
+ 
 </beans>
