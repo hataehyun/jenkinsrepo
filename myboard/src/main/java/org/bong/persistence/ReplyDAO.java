@@ -9,6 +9,11 @@ public interface ReplyDAO {
 	
 	public List<ReplyVO> getReplyList(Criteria2 cri2);
 	public int total(int bno);
+	//new reply
 	public void createNew(ReplyVO rvo);
 	public Integer getMaxGno(int bno);
+	//depth one reply
+	public void createLpno(ReplyVO rvo);
+	public void updateGord(ReplyVO rvo);
+	
 }

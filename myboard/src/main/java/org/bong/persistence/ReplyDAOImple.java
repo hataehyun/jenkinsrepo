@@ -37,10 +37,24 @@ public class ReplyDAOImple implements ReplyDAO {
 		sst.insert(namespace+".createNew", rvo);
 		
 	}
-
+////////////new reply
 	@Override
 	public Integer getMaxGno(int bno) {
 		return sst.selectOne(namespace+".getMaxGno", bno);
 	}
+//////////new reply end
+	
+/////////depth one reply
+	@Override
+	public void createLpno(ReplyVO rvo) {
+		sst.insert(namespace+".createLpno", rvo);
+		
+	}	
 
+	@Override
+	public void updateGord(ReplyVO rvo) {
+		sst.update(namespace+".updateGord", rvo);
+		
+	}
+///////////depth one reply end
 }

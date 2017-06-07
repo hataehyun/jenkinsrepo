@@ -64,6 +64,7 @@ public class ServiceDAOImple implements ServiceDAO {
 	public int total(int bno) {
 		return replyDAO.total(bno);
 	}
+////////register new reply
 	@Override
 	@Transactional
 	public void registerNew(ReplyVO rvo) {
@@ -78,5 +79,16 @@ public class ServiceDAOImple implements ServiceDAO {
 		}
 		
 	}
-
+/////////register new reply end
+	
+/////////register lpno reply
+	@Override
+	@Transactional
+	public void registerLpno(ReplyVO rvo) {
+		rvo.setGord(rvo.getGord()+1);
+		replyDAO.createLpno(rvo);
+		replyDAO.updateGord(rvo);
+		
+	}
+/////////register lpno reply end
 }

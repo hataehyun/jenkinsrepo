@@ -79,9 +79,10 @@
 			<a style="font-weight: bold; font-size:12pt;">{{writer}}</a>
 			<a style="margin-left:5%; color:black;">{{updatedate}}</a>
 			<a style="margin-left:5%">
-				<button><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
-				<button><i class="fa fa-wrench" aria-hidden="true"></i></button>
-				<button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+				<button id="replyOfReply"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+				<button id="updateReply"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+				<button id="deleteReply"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+				<div id="replyData" style="display:none">{{rno}},{{bno}},{{gno}},{{gord}},{{lpno}},{{mpno}},{{spno}}</div>
 			</a>
 		</div>
 		<div style="margin-top:4px;"><a style="color: black;">{{rcontent}}</a></div>
@@ -91,6 +92,7 @@
 
 <script>
 	$(document).ready(function(e){
+		var $document = $(document);
 		var replyList = $("#replyList");
 		var pagination = $("#pagination");
 		var bno = $("input[name=bno1]").val();
@@ -103,7 +105,12 @@
 					var source = $("#template").html();
 					var template = Handlebars.compile(source);
 					for(var i=0; i<result.replyList.length; i++){
-							var data = {writer:result.replyList[i].writer, rcontent:result.replyList[i].rcontent, updatedate:result.replyList[i].updatedate, depth:result.replyList[i].depth*40};
+							var data = {gno:result.replyList[i].gno,gord:result.replyList[i].gord,lpno:result.replyList[i].lpno,
+									mpno:result.replyList[i].mpno,spno:result.replyList[i].spno, bno:result.replyList[i].bno, 
+									rno:result.replyList[i].rno, writer:result.replyList[i].writer, rcontent:result.replyList[i].rcontent, 
+									updatedate:result.replyList[i].updatedate, depth:result.replyList[i].depth*40};
+							
+				
 							var html = template(data);
 							replyList.append(html);
 					}
@@ -114,7 +121,7 @@
 						if(result.page.cri2.page==i){
 							pagination.append("<a href="+i+" class='active'>"+i+"</a>");
 						} else{
-							pagination.append("<a href="+i+" class=''>"+i+"</a>");
+							pagination.append("<a href="+i+" id='current' class=''>"+i+"</a>");
 						}
 					}
 					if(result.page.next==true&&result.page.endPage>0){
@@ -151,7 +158,9 @@
 			console.log($f1.attr("method"));
 			$f1.submit();
 		});
-///////////////////////상세글script 끝/////////////////////////////////////
+///////////////////////board detail script end/////////////////////////////////////
+
+///////////////////reply new start/////////////////////////
 		$("#replyRegiBtn").on("click", function(e){
 			e.stopPropagation();
 			e.preventDefault();
@@ -169,15 +178,28 @@
 				type: "post",
 				data: {writer: rwriter, rcontent:rcontent, bno:bno},
 				success: function(e){
-					
+					$("#modalReplyBox").modal("toggle");
+					replyList.empty();
+					var page=$("#current").text();
+					pagination.empty();
+					console.log(page);
+					replys(bno, page);
+							
 				}
 			});
-			$("#modalReplyBox").modal("toggle");
-			replyList.empty();
-			pagination.empty();
-			replys(bno, $(".active").attr("href"));
+			
 		});
-		$(document).on("click", "#pagination a", function(e){
+	/////////////////////reply new end//////////////
+	
+	//////////////////////reply lpno start/////////////////
+		$document.on("click", "#replyOfReply",function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			//Parent's data is in the div.  
+		});
+		
+		
+		$document.on("click", "#pagination a", function(e){
 			e.stopPropagation();
 			e.preventDefault();
 			var page = $(this).attr("href");

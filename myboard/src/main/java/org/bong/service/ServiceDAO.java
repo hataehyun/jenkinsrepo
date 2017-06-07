@@ -18,5 +18,6 @@ public interface ServiceDAO {
 	public List<ReplyVO> getReplyList(Criteria2 cri2);
 	public int total(int bno);
 	public void registerNew(ReplyVO rvo);
+	public void registerLpno(ReplyVO rvo);
 	
 }

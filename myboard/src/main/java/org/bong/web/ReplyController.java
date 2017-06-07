@@ -47,4 +47,11 @@ public class ReplyController {
 		logger.info("rvo:"+rvo);
 		service.registerNew(rvo);
 	}
+	
+	@PostMapping("registerLpno")
+	@ResponseBody
+	public void registerLpno(ReplyVO rvo){
+		service.registerLpno(rvo);
+	}
+	
 }
