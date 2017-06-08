@@ -64,7 +64,7 @@
 <div id="pagination" style="float:right;">
 
 </div>
-
+<%@include file="../modal/modalReplyBox2.jsp"%>
 <%@include file="../modal/modalReplyBox.jsp"%>
 <%@include file="../modal/modalDelete.jsp"%>
 <%@include file="../include/listGetParameter.jsp"%>
@@ -191,13 +191,19 @@
 		});
 	/////////////////////reply new end//////////////
 	
-	//////////////////////reply lpno start/////////////////
+	//////////////////////replyOfReply start/////////////////
 		$document.on("click", "#replyOfReply",function(e){
 			e.stopPropagation();
 			e.preventDefault();
-			//Parent's data is in the div.  
+			$("#modalReplyBox2").modal({backdrop: 'static', keyboard: false});
+			
 		});
-		
+		$("#replyRegiCheckBtn2").on("click",function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			
+		});
+////////////////////replyOfReply finish///////////////////
 		
 		$document.on("click", "#pagination a", function(e){
 			e.stopPropagation();
