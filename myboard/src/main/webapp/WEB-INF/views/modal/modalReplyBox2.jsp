@@ -10,13 +10,13 @@
 					<div class="form-group">
      				<label class="col-sm-2 col-sm-2 control-label">작성자</label>
          		<div class="col-sm-10">
-            	<input type="text" name="rwriter" class="form-control">
+            	<input type="text" name="rwriter2" class="form-control">
          		</div>
   				</div>
   				<div class="form-group">
      				<label class="col-sm-2 col-sm-2 control-label">내용</label>
          		<div class="col-sm-10">
-            	<input type="text" name="rcontent" class="form-control">
+            	<input type="text" name="rcontent2" class="form-control">
          		</div>
   				</div>
 				</div>

@@ -79,10 +79,11 @@
 			<a style="font-weight: bold; font-size:12pt;">{{writer}}</a>
 			<a style="margin-left:5%; color:black;">{{updatedate}}</a>
 			<a style="margin-left:5%">
-				<button id="replyOfReply"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
-				<button id="updateReply"><i class="fa fa-wrench" aria-hidden="true"></i></button>
-				<button id="deleteReply"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-				<div id="replyData" style="display:none">{{rno}},{{bno}},{{gno}},{{gord}},{{lpno}},{{mpno}},{{spno}}</div>
+				<button id="replyOfReply" class="{{rno}},{{bno}},{{gno}},{{gord}},{{lpno}},{{mpno}},{{spno}}">
+					<i class="fa fa-arrow-down" aria-hidden="true"></i>
+				</button>
+				<button id="updateReply" class=""><i class="fa fa-wrench" aria-hidden="true"></i></button>
+				<button id="deleteReply" class="{{rno}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 			</a>
 		</div>
 		<div style="margin-top:4px;"><a style="color: black;">{{rcontent}}</a></div>
@@ -96,6 +97,7 @@
 		var replyList = $("#replyList");
 		var pagination = $("#pagination");
 		var bno = $("input[name=bno1]").val();
+		var replyData;
 		var replys = function(bno, pageNum){
 			$.ajax({
 				url: "/reply/replyList",
@@ -119,9 +121,9 @@
 					}
 					for(var i=result.page.startPage; i<result.page.endPage+1; i++){
 						if(result.page.cri2.page==i){
-							pagination.append("<a href="+i+" class='active'>"+i+"</a>");
+							pagination.append("<a href="+i+" id='current' class='active'>"+i+"</a>");
 						} else{
-							pagination.append("<a href="+i+" id='current' class=''>"+i+"</a>");
+							pagination.append("<a href="+i+" class=''>"+i+"</a>");
 						}
 					}
 					if(result.page.next==true&&result.page.endPage>0){
@@ -171,7 +173,6 @@
 			e.preventDefault();
 			var rwriter = $("input[name=rwriter]").val();
 			var rcontent = $("input[name=rcontent]").val();
-			var bno = $("input[name=bno1]").val();
 			console.log(rwriter, rcontent, bno);
 			$.ajax({
 				url: "/reply/registerNew",
@@ -181,6 +182,11 @@
 					$("#modalReplyBox").modal("toggle");
 					replyList.empty();
 					var page=$("#current").text();
+					if(page==""){
+						page=1;
+					} else {
+						
+					}
 					pagination.empty();
 					console.log(page);
 					replys(bno, page);
@@ -195,12 +201,38 @@
 		$document.on("click", "#replyOfReply",function(e){
 			e.stopPropagation();
 			e.preventDefault();
+			replyData = $(this).attr("class");
 			$("#modalReplyBox2").modal({backdrop: 'static', keyboard: false});
 			
 		});
 		$("#replyRegiCheckBtn2").on("click",function(e){
 			e.stopPropagation();
 			e.preventDefault();
+			var rwriter = $("input[name=rwriter2]").val();
+			var rcontent = $("input[name=rcontent2]").val();
+			var strArray = replyData.split(",");
+			var rno = strArray[0];
+			var bno = strArray[1];
+			var gno = strArray[2];
+			var gord = strArray[3];
+			var lpno= strArray[4];
+			var mpno = strArray[5];
+			var spno = strArray[6];
+			console.log(replyData);
+			$.ajax({
+				url: "/reply/registerLpno",
+				type: "post",
+				data: {writer: rwriter, rcontent:rcontent, bno:bno, rno:rno,gno:gno,gord:gord,lpno:lpno,mpno:mpno,spno:spno},
+				success: function(e){
+					$("#modalReplyBox2").modal("toggle");
+					replyList.empty();
+					var page=$("#current").text();
+					pagination.empty();
+					console.log(page);
+					replys(bno, page);
+							
+				}
+			});
 			
 		});
 ////////////////////replyOfReply finish///////////////////

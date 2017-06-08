@@ -85,10 +85,25 @@ public class ServiceDAOImple implements ServiceDAO {
 	@Override
 	@Transactional
 	public void registerLpno(ReplyVO rvo) {
-		rvo.setGord(rvo.getGord()+1);
-		replyDAO.createLpno(rvo);
-		replyDAO.updateGord(rvo);
-		
+		if(rvo.getLpno()==0){
+			rvo.setGord(rvo.getGord()+1);
+			rvo.setDepth(1);
+			rvo.setLpno(rvo.getRno());
+			replyDAO.updateGord(rvo);
+			replyDAO.createLpno(rvo);
+		} else if(rvo.getMpno()==0){
+			rvo.setGord(rvo.getGord()+1);
+			rvo.setDepth(2);
+			rvo.setMpno(rvo.getRno());
+			replyDAO.updateGord(rvo);
+			replyDAO.createLpno(rvo);
+		} else if(rvo.getSpno()==0){
+			rvo.setGord(rvo.getGord()+1);
+			rvo.setDepth(3);
+			rvo.setSpno(rvo.getRno());
+			replyDAO.updateGord(rvo);
+			replyDAO.createLpno(rvo);
+		}
 	}
 /////////register lpno reply end
 }

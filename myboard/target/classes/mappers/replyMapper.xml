@@ -23,7 +23,7 @@ values (#{bno}, #{gno}, 1, 0,0,0,0,#{writer},#{rcontent})
 
 <insert id="createLpno" parameterType="ReplyVO">
 insert into tbl_re (bno, gno, gord, lpno, mpno, spno, depth, writer, rcontent) 
-values (#{bno}, #{gno}, #{gord}, #{rno},0,0,1,#{writer},#{rcontent})
+values (#{bno}, #{gno}, #{gord}, #{lpno},#{mpno},#{spno},#{depth},#{writer},#{rcontent})
 </insert>
 
 <update id="updateGord" parameterType="ReplyVO">

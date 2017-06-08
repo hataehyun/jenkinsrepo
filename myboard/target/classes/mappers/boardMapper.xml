@@ -38,13 +38,13 @@
 	</sql>
 	
 	
-	<select id="getBoardList" parameterType="Criteria" resultType="BoardVO">
+	<select id="getBoardList" parameterType="org.bong.domain.Criteria" resultType="BoardVO">
 	<![CDATA[select * from tbl_board where bno > 0 ]]>
 	<include refid="search"></include>
   <![CDATA[order by bno desc limit #{pageStart}, #{perPageNum}]]>
 	</select>
 
-	<select id="listCount" parameterType="Criteria" resultType="int">
+	<select id="listCount" parameterType="org.bong.domain.Criteria" resultType="int">
 	<![CDATA[select count(bno) from tbl_board where bno > 0 ]]>
 	<include refid="search"></include>
 	</select>

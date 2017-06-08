@@ -33,7 +33,6 @@ public class ReplyController {
 		maps.put("replyList", replyList);
 		PageMaker2 pageMaker2 = new PageMaker2();
 		pageMaker2.setCri2(cri2);
-		logger.info("replyList: "+replyList);
 	    pageMaker2.setTotalCount(service.total(cri2.getBno()));
 	    maps.put("page", pageMaker2);
 	    maps.put("cri2", cri2);
@@ -51,7 +50,10 @@ public class ReplyController {
 	@PostMapping("registerLpno")
 	@ResponseBody
 	public void registerLpno(ReplyVO rvo){
-		service.registerLpno(rvo);
+		
+			logger.info("rvo: "+rvo);
+			service.registerLpno(rvo);
+	
 	}
 	
 }
